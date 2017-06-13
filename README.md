@@ -19,8 +19,8 @@ How to use it
 4. Paste the following code in the console and press "Enter".
   ```javascript
 var exploder = document.createElement("script");
-exploder.src = "http://dabsunter.github.io/sparklin-exploder/exploder.js";
-document.head.appendChild(exploder);﻿
+exploder.src = "http://imthe666st.github.io/sparklin-exploder/exploder.js";
+document.head.appendChild(exploder);
 ```
   ![Step 4](https://monosnap.com/file/UTGNLwe9RWPCStwCwJoKoG3ybNGV7L.png)
   
@@ -29,3 +29,6 @@ document.head.appendChild(exploder);﻿
   - **Auto:** Automaticly inject words when the arrow is pointing you.
 
   ![Step 5](https://monosnap.com/file/y93lIKvygJrXvpNLMaNwARSXpXIxX6.png)
+
+Credits:
+Dabsunter [Original repository](https://github.com/Dabsunter/sparklin-exploder)
