@@ -56,13 +56,13 @@ var injector = {
 			var q = new RegExp(channel.data.wordRoot,"i");
 			var i = injector.lastWord;
 			while(i != ++injector.lastWord && injector.canWrite){
-				if(injector.lastWord==words.length){
+				if(injector.lastWord==englishWords.length){
 					injector.lastWord = 0;
 				}
-				if(words[injector.lastWord].match(q)){
+				if(englishWords[injector.lastWord].match(q)){
 					for(var j = 0;j<channel.data.actorsByAuthId[window.app.user.authId].lockedLetters.length;j++){
-						if(words[injector.lastWord].match(new RegExp(channel.data.actorsByAuthId[window.app.user.authId].lockedLetters[j],"i"))) {
-							setWord(words[injector.lastWord],1);
+						if(englishWords[injector.lastWord].match(new RegExp(channel.data.actorsByAuthId[window.app.user.authId].lockedLetters[j],"i"))) {
+							setWord(englishWords[injector.lastWord],1);
 							return;
 						}
 					}
@@ -96,4 +96,4 @@ var currentStatus = document.createElement('li');
 parentThing.appendChild(currentStatus);
 var wordScript = document.createElement("script");
 wordScript.src = "http://imthe666st.github.io/sparklin-exploder/dictionary.js";
-document.head.appendChild(wordScript);﻿
+document.head.appendChild(wordScript);
