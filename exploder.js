@@ -23,7 +23,7 @@ channel.socket.on("setActivePlayerIndex", function (a) {
 	if(channel.data.actors[channel.data.activePlayerIndex].authId === app.user.authId){
 		injector.canWrite = true
 		if (injector.autoInject) {
-			setTimeout(injector.inject,rand(400,1100));
+			setTimeout(function() {injector.inject(true);},rand(400,1100));
 		}
 	} else {
 		injector.canWrite = false;
@@ -31,7 +31,7 @@ channel.socket.on("setActivePlayerIndex", function (a) {
 });
 channel.socket.on("failWord", function (a) {
 	if(channel.data.actors[channel.data.activePlayerIndex].authId === app.user.authId && injector.autoInject){
-		setTimeout(injector.inject,rand(400,1100));
+		setTimeout(function() {injector.inject(true);},rand(400,1100));
 	}
 });
 
@@ -50,7 +50,7 @@ var injector = {
 		}
 	},
 
-	inject: function() {
+	function inject(a) {
 		if(window.app.user.authId == channel.data.actors[channel.data.activePlayerIndex].authId){
 			updateStatus("Injecting normally");
 			var q = new RegExp(channel.data.wordRoot,"i");
@@ -69,7 +69,12 @@ var injector = {
 				}
 			}
 			injector.lastWord = 0;
-			updateStatus("Normal Inject Failed");
+			if (a === false) {
+				updateStatus("Normal Inject Failed");
+				return;
+			} else {
+				inject(false)
+			}
 		}
 	}
 };
@@ -86,7 +91,7 @@ parentThing = document.getElementById("SettingsTab");
 parentThing.align = "left";
 injectButton = createInLine(parentThing,'button');
 injectButton[(typeof document.body.style.WebkitAppearance=="string")?"innerText":"innerHTML"] = 'English Inject';
-injectButton.addEventListener('click',injector.inject);
+injectButton.addEventListener('click',injector.inject(true));
 autoButton = createInLine(parentThing,'button');
 autoButton[(typeof document.body.style.WebkitAppearance=="string")?"innerText":"innerHTML"] = 'Auto ';
 autoButton.addEventListener('click',injector.toggleAutoInject);
